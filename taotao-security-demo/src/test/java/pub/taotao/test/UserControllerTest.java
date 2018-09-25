@@ -35,8 +35,16 @@ public class UserControllerTest {
     @Test
     public void whenQueryListSuccess() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/user")
+                .param("username","zhangsan")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(3));
+    }
+
+    @Test
+    public void whenQueryInfoSuccess() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/1")
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
