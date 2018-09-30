@@ -1,12 +1,18 @@
 package pub.taotao.dto;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
+    public interface SimpleView{}
+    public interface DetailView extends SimpleView{}
+
     private Long id;
     private String username;
     private String password;
 
+    @JsonView(SimpleView.class)
     public Long getId() {
         return id;
     }
@@ -15,6 +21,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    @JsonView(SimpleView.class)
     public String getUsername() {
         return username;
     }
@@ -23,6 +30,7 @@ public class User implements Serializable {
         this.username = username;
     }
 
+    @JsonView(DetailView.class)
     public String getPassword() {
         return password;
     }
