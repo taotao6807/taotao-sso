@@ -1,10 +1,7 @@
 package pub.taotao.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pub.taotao.dto.User;
 
 import java.util.ArrayList;
@@ -30,6 +27,11 @@ public class UserController {
     public User detail(@PathVariable Long id){
         System.out.println(id);
         return new User();
+    }
+
+    @PostMapping
+    public void add(@RequestBody User user){
+        System.out.println(user);
     }
 
 }

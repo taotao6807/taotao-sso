@@ -51,4 +51,13 @@ public class UserControllerTest {
                 .andReturn().getResponse().getContentAsString();
         System.out.println(content);
     }
+
+    @Test
+    public void whenAddSuccess() throws Exception{
+        String content = "{\"username\":\"Jerry\",\"password\":123456}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/user")
+                .content(content)
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 }
